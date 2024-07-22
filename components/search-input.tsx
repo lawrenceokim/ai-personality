@@ -33,7 +33,7 @@ function SearchInput() {
         query,
       },
       { skipEmptyString: true, skipNull: true }
-    ); //removes the string(ie "categoryId" or "name" above) from the query if it is NULL or EMPTY
+    ); //removes the string(ie "categoryId" and/or "name" above) from the query input element if it is NULL or EMPTY
 
     router.push(url);
   }, [debouncedValue, router, categoryid]);
