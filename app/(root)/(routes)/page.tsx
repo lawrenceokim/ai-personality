@@ -1,10 +1,9 @@
-import { UserButton } from "@clerk/nextjs";
-import React from "react";
+import SearchInput from "@/components/search-input";
 
 function RootPage() {
   return (
-    <div>
-      <UserButton />
+    <div className="h-full p-4 space-y-5">
+      <SearchInput />
     </div>
   );
 }
