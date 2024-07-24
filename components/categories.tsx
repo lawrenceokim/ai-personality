@@ -3,38 +3,42 @@
 import qs from "query-string";
 import { cn } from "@/lib/utils";
 import { useRouter, useSearchParams } from "next/navigation";
+import { Category } from "@prisma/client";
 
 const data = [
   {
-    label: "Philosophy",
+    name: "Philosophy",
     id: "000-111-222-333-444-555",
   },
   {
-    label: "Animals",
+    name: "Animals",
     id: "222-333-444-555-666-777",
   },
   {
-    label: "Movies & TV",
+    name: "Movies & TV",
     id: "333-444-555-666-777-888",
   },
   {
-    label: "Musicians",
+    name: "Musicians",
     id: "121-323-443-565-767-787",
   },
   {
-    label: "Scientists",
+    name: "Scientists",
     id: "353-666-745-242-668-376",
   },
   {
-    label: "Famous People",
+    name: "Famous People",
     id: "998-489-902-567-291-759",
   },
 ];
 
-function Categories() {
+interface CategoriesProps {
+  data: Category[];
+}
+
+function Categories({ data }: CategoriesProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
-
   const categoryId = searchParams.get("categoryId");
 
   const onClick = (id: string | undefined) => {
@@ -71,7 +75,7 @@ function Categories() {
             item.id === categoryId ? "bg-primary/25" : "bg-primary/10"
           )}
         >
-          {item.label}
+          {item.name}
         </button>
       ))}
     </div>
