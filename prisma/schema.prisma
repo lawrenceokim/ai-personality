@@ -1,16 +1,18 @@
 // This is your Prisma schema file,
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
 generator client {
   provider = "prisma-client-js"
   previewFeatures = ["fullTextSearch", "fullTextIndex"]
 }
 
 datasource db {
-  provider = "sqlite"
+  provider = "mysql"
   url      = env("DATABASE_URL")
 }
-
 
 model Category {
   id              String @id @default(uuid())
@@ -23,10 +25,10 @@ model Companion{
   userid          String
   userName        String
   src             String //companion's image
-  name            String //@db.Text //will enable much longer text inputs & will also make it searchable
+  name            String @db.Text //will enable much longer text inputs & will also make it searchable
   description     String
-  instructions    String //@db.Tex & will also make it searchable
-  seed            String //@db.Text
+  instructions    String @db.Text //will also make it searchable
+  seed            String @db.Text
 
   createdAt       DateTime @default(now())
   updatedAt       DateTime @updatedAt
@@ -35,5 +37,5 @@ model Companion{
   categoryId      String
 
   @@index([categoryId])
-  // @@fulltext([name])
+  @@fulltext([name])
 }

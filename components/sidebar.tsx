@@ -17,7 +17,7 @@ function Sidebar() {
     },
     {
       icon: Plus,
-      href: "/personality/new",
+      href: "/companion/new",
       label: "Create",
       pro: true,
     },
